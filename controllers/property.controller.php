@@ -66,18 +66,26 @@ class PropertyController
 
         if($idProperty != ''){
             $data = $this->model->obtenerRegistro($idProperty);
-            // var_dump($data);
-            if($data){
-                $oProperty = new Property();
-                $oProperty->direccion = $data['Direccion'];
-                $oProperty->city = $data['Ciudad'];
-                $oProperty->telephone = $data['Telefono'];
-                $oProperty->code_postal = $data['Codigo_Postal'];
-                $oProperty->type = $data['Tipo'];
-                $oProperty->price = covertirStringDecimal($data['Precio'] );
-        
-                $this->model->Registrar($oProperty);
-                $this->mensaje=array("G", "Propiedad guardado");
+
+            $oPropertyId = $this->model->ObtenerBD($idProperty);
+            if(!$oPropertyId){
+                // var_dump($data);
+                if($data){
+                    $oProperty = new Property();
+                    $oProperty->id =  $data['Id'];
+                    $oProperty->direccion = $data['Direccion'];
+                    $oProperty->city = $data['Ciudad'];
+                    $oProperty->telephone = $data['Telefono'];
+                    $oProperty->code_postal = $data['Codigo_Postal'];
+                    $oProperty->type = $data['Tipo'];
+                    $oProperty->price = covertirStringDecimal($data['Precio'] );
+            
+                    $this->model->Registrar($oProperty);
+                    $this->mensaje=array("G", "Propiedad guardado");
+                }
+
+            }else{
+                $this->mensaje=array("I", "Ya está guardado");
             }
         }
 
@@ -98,10 +106,20 @@ class PropertyController
         $idProperty = ($_REQUEST['id'])?$_REQUEST['id']:'';
 
         if($idProperty != ''){
-            $this->model->Eliminar($idProperty);
-            $this->mensaje=array("E", "Propiedad Eliminado");
+            // Buscamos al registro de la bd
+            $oPropertyId = $this->model->ObtenerBD($idProperty);
+            if($oPropertyId){
+                // Eliminamos el registro
+                $this->model->Eliminar($idProperty);
+                $this->mensaje=array("E", "Propiedad Eliminado");
+
+            }else{
+                $this->mensaje=array("I", "Ya fue eliminado");
+            }
             $this->Index();
+            
         }
+
     }
 
     public function GenerarReporte(){

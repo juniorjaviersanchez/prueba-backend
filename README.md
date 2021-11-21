@@ -16,8 +16,8 @@ _Necesitamos para poder ejecutar el proyecto_
 
 ### Instalación 🔧
 
-* Primero levantar los servicios para php, se recomienda usar Wamp Server o Xamp_
-* Crear una BD con el nombre 'intelcost_bienes' y crear una tabla llamada 'properties', recuerda que el Script de la tabla está en la carpeta 'bd'_
+* Primero levantar los servicios para php, se recomienda usar Wamp Server o Xamp
+* Crear una BD con el nombre 'intelcost_bienes' y crear una tabla llamada 'properties', recuerda que el Script de la tabla está en la carpeta 'bd'
 
 _Luego clonar el repositorio_
 

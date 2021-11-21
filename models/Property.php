@@ -102,12 +102,13 @@ class Property
 	{
 		try 
 		{
-		$sql = "INSERT INTO properties (direccion,city,telephone,code_postal,type,price) 
-		        VALUES (?, ?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO properties (id,direccion,city,telephone,code_postal,type,price) 
+		        VALUES (?,?, ?, ?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
+					$data->id,
                     $data->direccion,
                     $data->city, 
                     $data->telephone,
@@ -149,6 +150,23 @@ class Property
 			            ->prepare("DELETE FROM properties WHERE id = ?");			          
 
 			$stm->execute(array($id));
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
+	// Obtener por id
+	public function ObtenerBD($id)
+	{
+		try 
+		{
+			$stm = $this->pdo
+			          ->prepare("SELECT * FROM properties WHERE id = ?");
+			          
+
+			$stm->execute(array($id));
+			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e) 
 		{
 			die($e->getMessage());
