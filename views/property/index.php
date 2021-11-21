@@ -150,7 +150,7 @@
                                 </div>
                                
                                 <div class="botonField">
-                                    <input type="submit" class="btn white" value="Buscar" id="submitButton">
+                                    <input type="submit" class="btn white" value="Generar Excel" id="submitButton">
                                 </div>
                             </div>
                         </form>

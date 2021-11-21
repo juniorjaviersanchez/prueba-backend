@@ -27,7 +27,8 @@ git clone git@github.com:juniorjaviersanchez/prueba-backend.git
 
 _Ejectuar en el navegador_
 
-![screenshot](https://github.com/elmersan/my-team-page/blob/master/images/my-team-page.png)
+_Vista principal_
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/vista-principal.png)
 
 
 ## Pruebas ⚙️
