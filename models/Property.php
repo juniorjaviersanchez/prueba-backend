@@ -27,11 +27,29 @@ class Property
 		}
 	}
 
-    //Método para listar los bienes desde el json
+	//Método para listar los bienes desde el json
 	public function listaLocal()
 	{
 		$data = file_get_contents("data-1.json");
         return json_decode($data, true);
+	}
+
+    //Método para obtener registro por su id
+	public function obtenerRegistro($id)
+	{
+		// Obtenemos la lista de bienes
+		$data = $this->listaLocal();
+		$i=0;
+		$oProperty = new Property;
+		foreach($data as $item) {
+			if ($item['Id'] == $id ) {
+				$oProperty = $item;
+				return $oProperty;
+			}
+			$i++;
+		}
+
+        return $oProperty;
 	}
 
 	// Método para obtener datos no repetidos
@@ -54,6 +72,7 @@ class Property
 		return $temp_array;
 	}
 
+	// Filtrar por ciudad o tipo
 	public function filtro($filtroCiudad, $filtroTipo){
 		$data = $this->listaLocal();
 		$temp_array = array();
@@ -72,10 +91,65 @@ class Property
 			$i++;
 		}
 		return $temp_array;
-		
 	}
 
-   
+	// Guardar en la BD
+	public function Registrar(Property $data)
+	{
+		try 
+		{
+		$sql = "INSERT INTO properties (direccion,city,telephone,code_postal,type,price) 
+		        VALUES (?, ?, ?, ?, ?, ?)";
+
+		$this->pdo->prepare($sql)
+		     ->execute(
+				array(
+                    $data->direccion,
+                    $data->city, 
+                    $data->telephone,
+                    $data->code_postal,
+                    $data->type,
+                    $data->price
+                )
+			);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
+	// Listar de la BD
+	public function Listar()
+	{
+		try
+		{
+			$result = array();
+
+			$stm = $this->pdo->prepare("SELECT * FROM properties order by id desc");
+			$stm->execute();
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
+	// Eliminar desde la BD
+	public function Eliminar($id)
+	{
+		try 
+		{
+			$stm = $this->pdo
+			            ->prepare("DELETE FROM properties WHERE id = ?");			          
+
+			$stm->execute(array($id));
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
 
 
 }
