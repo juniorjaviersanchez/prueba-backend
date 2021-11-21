@@ -28,28 +28,33 @@ git clone git@github.com:juniorjaviersanchez/prueba-backend.git
 _Ejectuar en el navegador_
 
 _Vista principal_
-![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/vista-principal.png)
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/0-vista-principal.png)
 
 
 ## Pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+* 1.- El buscador debe mostrar en la pestaña “Bienes disponibles” todos los registros de los bienes en los datos generales al acceder al index. 
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/1-todos-los-registros.png)
 
-### Analice las pruebas end-to-end 🔩
+* 2.- Los menús desplegables a la izquierda de la página que indican la ciudad y el tipo de vivienda. Deben cargarse con todas las ciudades y tipos presentes en los datos generales sin repetirse.
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/2-llenar-select.png)
 
-_Explica que verifican estas pruebas y por qué_
+* 3.- Con los campos Ciudad y Tipo cargados, si se selecciona un elemento del menú desplegable y se da click en el botón “Buscar”, Se deben visualizar únicamente los registros que hagan parte de la ciudad o tipo seleccionados. 
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/3-filtro.png)
 
-```
-Da un ejemplo
-```
+* 4.- Cree una base de datos mysql con el nombre “Intelcost_bienes”, la cual contenga las tablas que sean necesarias para guardar en base de datos el registro de un bien seleccionado en pantalla
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/4-btn-guardar.png)
 
-### Y las pruebas de estilo de codificación ⌨️
+* 5.- Cada vez que se de click en la pestaña “Mis bienes”, deberá listar todos los bienes guardados por el usuario en la base de datos:
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/5-mis-bienes.png)
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/5-1-bd.png)
 
-_Explica que verifican estas pruebas y por qué_
+* 6.- Una vez listados los bienes en la pestaña “Mis bienes”. Por cada registro listado se debe poder eliminar el registro previamente asociado, dándole clic al botón “eliminar”
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/6-btn-eliminar.png)
 
-```
-Da un ejemplo
-```
+* 7.- Crear una pestaña adicional que se llame “Reportes”, la cual permitirá generar un exportable tipo Excel con los bienes seleccionados. Se debe tener en cuenta que el usuario podrá hacer uso de los filtros por ciudad o tipo para limitar la cantidad de resultado en el exportable.
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/7-generar-excel.png)
+![screenshot](https://github.com/juniorjaviersanchez/prueba-backend/blob/master/img-readme/7-1-reporte-excel.png)
 
 
 ## Construido con 🛠️
