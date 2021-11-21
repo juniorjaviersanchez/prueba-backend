@@ -6,12 +6,6 @@ header("Expires: 0");
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 header("Cache-Control: private",false);
 
-// Recibimos la data en json
-$data = ($_REQUEST['data'])?$_REQUEST['data']:'';
-
-// Convertimos el json a Array
-$data = json_decode($data,true);
-
 ?>
 
 
@@ -25,7 +19,7 @@ $data = json_decode($data,true);
     <th>PRECIO</th>
 </tr>
     <!-- Recorremos los registros -->
-    <?php foreach($data as $item): ?>
+    <?php foreach($this->listado as $item): ?>
         <tr>
             <td><?php echo $item['Direccion']; ?></td>
             <td><?php echo $item['Ciudad']; ?></td>

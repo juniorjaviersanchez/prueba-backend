@@ -9,17 +9,17 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 ### Pre-requisitos 📋
 
-_Requisitos para poder ejecutar el proyecto_
+_Necesitamos para poder ejecutar el proyecto_
 
 * PHP  7.3.21
 * MySQL  5.7
 
 ### Instalación 🔧
 
-_1.- Primero levantar los servicios para php, se recomienda usar Wamp Server o Xamp_
-_2.- Crear una BD con el nombre 'intelcost_bienes' y crear una tabla llamada 'properties', recuerda que el Script de la tabla está en la carpeta bd_
+* Primero levantar los servicios para php, se recomienda usar Wamp Server o Xamp_
+* Crear una BD con el nombre 'intelcost_bienes' y crear una tabla llamada 'properties', recuerda que el Script de la tabla está en la carpeta 'bd'_
 
-_Luego clonar el repositorio
+_Luego clonar el repositorio_
 
 ```
 git clone git@github.com:juniorjaviersanchez/prueba-backend.git
@@ -27,8 +27,10 @@ git clone git@github.com:juniorjaviersanchez/prueba-backend.git
 
 _Ejectuar en el navegador_
 
+![screenshot](https://github.com/elmersan/my-team-page/blob/master/images/my-team-page.png)
 
-## Ejecutando las pruebas ⚙️
+
+## Pruebas ⚙️
 
 _Explica como ejecutar las pruebas automatizadas para este sistema_
 

@@ -84,8 +84,12 @@ class Property
 					$temp_array[$i] = $item;
 				}
 			}else{
-				if ($item['Ciudad'] == $filtroCiudad || $item['Tipo'] == $filtroTipo) {
-					$temp_array[$i] = $item;
+				if($filtroCiudad == '' && $filtroTipo == ''){
+					return $data;
+				}else{
+					if ($item['Ciudad'] == $filtroCiudad || $item['Tipo'] == $filtroTipo) {
+						$temp_array[$i] = $item;
+					}
 				}
 			}
 			$i++;

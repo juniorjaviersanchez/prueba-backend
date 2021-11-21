@@ -5,6 +5,7 @@ require_once 'helpers/help.php';
 class PropertyController
 {
     private $model;
+    private $mensaje;
 
     public $listado;
     public $listadoBD;
@@ -14,6 +15,7 @@ class PropertyController
     public function __CONSTRUCT(){
         // Inicializamos las variables
         $this->model = new Property();
+        $this->mensaje = array("nell", "nell");
         $this->ciudadSelect = "";
         $this->TipoSelect = "";
     }
@@ -46,6 +48,10 @@ class PropertyController
         $this->listado = $this->model->filtro($filtroCiudad,$filtroTipo);
         $this->ListarDesdeBD();
 
+        if($filtroCiudad == '' && $filtroTipo == ''){
+            $this->mensaje=array("I", "Selecionar filtros");
+        }
+
         // Las vistas
         require_once 'views/header.php';
         require_once 'views/property/index.php';
@@ -71,6 +77,7 @@ class PropertyController
                 $oProperty->price = covertirStringDecimal($data['Precio'] );
         
                 $this->model->Registrar($oProperty);
+                $this->mensaje=array("G", "Propiedad guardado");
             }
         }
 
@@ -92,13 +99,11 @@ class PropertyController
 
         if($idProperty != ''){
             $this->model->Eliminar($idProperty);
+            $this->mensaje=array("E", "Propiedad Eliminado");
             $this->Index();
         }
     }
 
-    /**
-     * Método para generar Excel
-     */
     public function GenerarReporte(){
         // Recuperamos los filtros
         $filtroCiudad = ($_REQUEST['ciudad'])?$_REQUEST['ciudad']:'';
@@ -106,16 +111,14 @@ class PropertyController
 
         if($filtroCiudad != '' || $filtroTipo != ''){
             // Buscamos los registros
-            $data = $this->model->filtro($filtroCiudad,$filtroTipo);
-    
-            // De Array a Json
-            $data = json_encode($data);
-            $data =  str_replace('#'," ",$data);
+            $this->listado = $this->model->filtro($filtroCiudad,$filtroTipo);
     
             // Enviamos data a exportar
-            header('Location: ' . "excel/excel_property.php?data=$data", true);
+            require_once 'excel/excel_property.php';
+        }else{
+            $this->mensaje=array("I", "Selecionar filtros");
+            $this->Index();
         }
-        $this->Index();
         
     }
 }

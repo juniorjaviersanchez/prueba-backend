@@ -13,6 +13,12 @@
     <link type="text/css" rel="stylesheet" href="public/css/index.css" media="screen,projection" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>Formulario</title>
+
+    <!-- sweetalert2 JS-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Toastr CSS-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 
 <body>
